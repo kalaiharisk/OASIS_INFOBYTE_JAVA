@@ -1,0 +1,105 @@
+import java.util.Scanner;
+
+class User {
+    private String userId;
+    private String userPin;
+
+    public User(String userId, String userPin) {
+        this.userId = userId;
+        this.userPin = userPin;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getUserPin() {
+        return userPin;
+    }
+}
+
+class ATM {
+    private User user;
+    private double balance;
+
+    public ATM(User user, double balance) {
+        this.user = user;
+        this.balance = balance;
+    }
+
+    public void displayMenu() {
+        System.out.println("Welcome to the ATM!");
+        System.out.println("1. View Transactions History");
+        System.out.println("2. Withdraw");
+        System.out.println("3. Deposit");
+        System.out.println("4. Transfer");
+        System.out.println("5. Quit");
+    }
+
+    public void performOperation(int choice) {
+        switch (choice) {
+            case 1:
+                viewTransactionsHistory();
+                break;
+            case 2:
+                withdraw();
+                break;
+            case 3:
+                deposit();
+                break;
+            case 4:
+                transfer();
+                break;
+            case 5:
+                System.out.println("Thank you for using the ATM. Goodbye!");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+        }
+    }
+
+    private void viewTransactionsHistory() {
+        // Implement logic to display transactions history
+        System.out.println("Displaying transactions history...");
+    }
+
+    private void withdraw() {
+        // Implement logic for withdrawal
+        System.out.println("Withdrawal operation...");
+    }
+
+    private void deposit() {
+        // Implement logic for deposit
+        System.out.println("Deposit operation...");
+    }
+
+    private void transfer() {
+        // Implement logic for transfer
+        System.out.println("Transfer operation...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter user ID: ");
+        String userId = scanner.nextLine();
+
+        System.out.print("Enter user PIN: ");
+        String userPin = scanner.nextLine();
+
+        User user = new User(userId, userPin);
+        ATM atm = new ATM(user, 0.0);
+
+        while (true) {
+            atm.displayMenu();
+
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            atm.performOperation(choice);
+        }
+    }
+}
